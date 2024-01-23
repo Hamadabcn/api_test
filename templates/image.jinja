@@ -1,0 +1,30 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<div class="container">
+    <h1>Your Image</h1>
+    <div class="row mt-2">
+        <div class="col-md-7">
+            <img class="img-fluid" src="https://image-api-bucket-2024.s3.eu-west-3.amazonaws.com/uploads/{{ image_name }}">
+        </div>
+        <div class="col-md-5">
+            <h2>Resize</h2>
+            <form action="/resize" method="post">
+                <input type="hidden" name="filename" value="{{ image_name }}">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Width</span>
+                    <input type="text" class="form-control" name="width">
+                    <span class="input-group-text">px</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Height</span>
+                    <input type="text" class="form-control" name="height">
+                    <span class="input-group-text">px</span>
+                </div>
+                <button type="submit" class="btn btn-primary">Resize</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

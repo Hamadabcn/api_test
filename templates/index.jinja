@@ -1,0 +1,23 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<section>
+    <h1>Your Images:</h1>
+    <div class="row gy-3">
+        {% for image in images %}
+        <div class="col-md-1">
+            <a href="/image/{{ image.split('/')[1] }}"><img src="{{ S3_URL }}/{{image}}" class="img-thumbnail"></a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="mt-4">
+<h1>Upload your image:</h1>
+<form action="/" method="post" enctype="multipart/form-data">
+    <div>
+        <input class="form-control form-control-lg" id="formFileLg" type="file" name="file">
+        <button type="submit" class="btn btn-primary mt-3">Upload</button>
+    </div>
+</form>
+</section>
+{% endblock content %}
